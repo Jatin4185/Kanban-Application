@@ -29,7 +29,7 @@ const Navbar = ({
   };
   return (
     <>
-      <header className="col-span-2">
+      <header className="sm:col-span-2">
         <div
           className="flex justify-start bg-white
       items-center h-[80px] dark:bg-[#2b2c37]
