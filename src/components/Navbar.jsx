@@ -44,18 +44,17 @@ const Navbar = ({
               />
             ) : (
               <GiHamburgerMenu
-                size={32}
-                className="text-blue-500 cursor-pointer"
+                className="text-blue-500 cursor-pointer text-xl md:text-3xl"
                 onClick={() => setSideBarOpen(!sideBarOpen)}
               />
             )}
 
-            <h1 className="text-xl sm:text-4xl font-bold  text-black dark:text-blue-500">
+            <h1 className="text-xl md:text-4xl font-bold  text-black dark:text-blue-500">
               kanban
             </h1>
           </div>
           <div className="flex justify-between items-center flex-1">
-            <h1 className="text-sm sm:text-2xl font-bold text-black dark:text-white">
+            <h1 className="text-sm md:text-2xl p-2 font-bold text-black dark:text-white">
               {selectedBoardName}
             </h1>
             <div className="flex justify-between items-center space-x-2">
