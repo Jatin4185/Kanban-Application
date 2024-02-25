@@ -50,18 +50,18 @@ const Navbar = ({
               />
             )}
 
-            <h1 className="text-2xl sm:text-4xl font-bold  text-black dark:text-blue-500">
+            <h1 className="text-xl sm:text-4xl font-bold  text-black dark:text-blue-500">
               kanban
             </h1>
           </div>
           <div className="flex justify-between items-center flex-1">
-            <h1 className="text-md sm:text-2xl font-bold text-black dark:text-white">
+            <h1 className="text-sm sm:text-2xl font-bold text-black dark:text-white">
               {selectedBoardName}
             </h1>
             <div className="flex justify-between items-center space-x-2">
               <button
                 onClick={() => setAddTaskOpen(!addTaskOpen)}
-                className="px-4 py-2   md:px-6 md:py-3 bg-blue-500 hover:bg-blue-600 transition delay-150 
+                className="px-3 py-1   md:px-6 md:py-3 bg-blue-500 hover:bg-blue-600 transition delay-150 
           duration-300 ease-in-out font-bold rounded-[50%] md:rounded-3xl text-white"
               >
                 <span className="hidden md:block">+ Add New Task</span>

@@ -14,7 +14,7 @@ const SideBar = ({ theme, setTheme, sideBarOpen }) => {
       <section
         className={`${
           !sideBarOpen ? "hidden" : "block"
-        } row-start-2 min-w-[261px] bg-white dark:bg-[#2b2c37] 
+        } row-start-2 w-full sm:max-w-[261px] bg-white dark:bg-[#2b2c37] 
       h-screen pt-2 fixed top-[80px] buttom-0`}
       >
         <h1 className="px-4 pt-4 text-black dark:text-slate-400 text-semibold">{`ALL BOARDS (${boards.length})`}</h1>
