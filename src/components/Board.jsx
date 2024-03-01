@@ -31,7 +31,7 @@ const Board = ({ sideBarOpen }) => {
 
   return (
     <main
-      className={`flex px-8 py-4 gap-16 ${
+      className={`h-screen flex px-8 py-4 gap-16 ${
         sideBarOpen ? "col-start-2" : "col-start-1 col-span-2"
       } bg-[#f4f7fd] dark:bg-[#20212c] overflow-auto`}
     >

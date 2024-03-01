@@ -7,7 +7,10 @@ import SideBar from "./components/SideBar";
 const App = () => {
   const boards = useSelector((state) => state.boards);
   const dispatch = useDispatch();
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme || "light";
+  });
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const element = document.documentElement;
 
@@ -15,9 +18,11 @@ const App = () => {
     switch (theme) {
       case "dark":
         element.classList.add("dark");
+        localStorage.setItem("theme", "dark");
         break;
       case "light":
         element.classList.remove("dark");
+        localStorage.removeItem("theme");
         break;
       default:
         break;
