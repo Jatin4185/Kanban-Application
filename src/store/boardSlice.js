@@ -135,6 +135,91 @@ export const boardSlice = createSlice({
 
       state.list.map((board) => (board.isActive ? activeBoard : board));
     },
+    dragDropInSingleList: (state, action) => {
+      console.log(action);
+
+      const activeBoard = state.list.find(
+        (board) => board.boardId === state.activeBoardId
+      );
+      if (!activeBoard) return;
+
+      const { sourceIndex, destinationIndex } = action.payload;
+
+      const columns = activeBoard.columns.map((column) => {
+        if (column.columnId === action.payload.columnId) {
+          const task = column.tasks[sourceIndex];
+          let newTasks = column.tasks;
+          newTasks = [
+            ...newTasks.slice(0, sourceIndex),
+            ...newTasks.slice(sourceIndex + 1),
+          ];
+          newTasks = [
+            ...newTasks.slice(0, destinationIndex),
+            task,
+            ...newTasks.slice(destinationIndex),
+          ];
+          return {
+            ...column,
+            tasks: newTasks,
+          };
+        } else {
+          return column;
+        }
+      });
+
+      activeBoard.columns = columns;
+      state.list.map((board) => (board.isActive ? activeBoard : board));
+    },
+
+    dragDrapBetweenTwoList: (state, action) => {
+      const {
+        destinationColumnId,
+        destinationIndex,
+        sourceColumnId,
+        sourceIndex,
+        taskId,
+      } = action.payload;
+
+      const activeBoard = state.list.find(
+        (board) => board.boardId === state.activeBoardId
+      );
+
+      if (!activeBoard) return;
+
+      const srcColumn = activeBoard?.columns.find(
+        (column) => column.columnId === sourceColumnId
+      );
+
+      const task = srcColumn?.tasks.find((task) => task.taskId === taskId);
+
+      if (!task) return;
+
+      const columns = activeBoard?.columns?.map((column) => {
+        if (column.columnId === sourceColumnId) {
+          return {
+            ...column,
+            tasks: [
+              ...column.tasks.slice(0, sourceIndex),
+              ...column.tasks.slice(sourceIndex + 1),
+            ],
+          };
+        } else if (column.columnId === destinationColumnId) {
+          return {
+            ...column,
+            tasks: [
+              ...column.tasks.slice(0, destinationIndex),
+              task,
+              ...column.tasks.slice(destinationIndex + 1),
+            ],
+          };
+        } else {
+          return column;
+        }
+      });
+
+      activeBoard.columns = columns;
+      state.list.map((board) => (board.isActive ? activeBoard : board));
+    },
   },
 });
 
@@ -147,5 +232,7 @@ export const {
   addNewTask,
   updateTask,
   deleteTask,
+  dragDropInSingleList,
+  dragDrapBetweenTwoList,
 } = boardSlice.actions;
 export default boardSlice.reducer;

@@ -23,3 +23,7 @@ body {
 * {
   @apply transition-colors duration-300 delay-100 ease-linear;
 }
+
+.list {
+  @apply bg-blue-500;
+}

@@ -1,9 +1,13 @@
 import React from "react";
 import Task from "./Task";
-import { FaCircle } from "react-icons/fa";
+import { FaCircle, FaSnapchat } from "react-icons/fa";
+import { Droppable } from "react-beautiful-dnd";
 const Column = ({ column, color }) => {
   const numTask = column && column.tasks ? column.tasks.length : 0;
-
+  const getListStyle = (isDraggingOver, droppableStyle) => ({
+    ...droppableStyle,
+    backgroundColor: isDraggingOver ? "#ccffcc" : "",
+  });
   return (
     <div className="min-w-[280px]">
       <div
@@ -15,11 +19,29 @@ const Column = ({ column, color }) => {
         </span>
         <span>{`${column.name} (${numTask})`}</span>
       </div>
-      <div className="flex flex-col gap-6 min-h-[600px]">
+      <Droppable droppableId={column.columnId}>
+        {(provided, snapshot) => (
+          <div
+            className="flex flex-col gap-6 min-h-[600px]"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            style={getListStyle(
+              snapshot.isDraggingOver,
+              provided.droppableProps.style
+            )}
+          >
+            {column.tasks.map((task, index) => (
+              <Task key={task.taskId} task={task} index={index} />
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+      {/* <div className="flex flex-col gap-6 min-h-[600px]">
         {column.tasks.map((task) => (
           <Task key={task.taskId} task={task} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

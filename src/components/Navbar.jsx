@@ -44,12 +44,12 @@ const Navbar = ({
               />
             ) : (
               <GiHamburgerMenu
-                className="text-blue-500 cursor-pointer text-xl md:text-3xl"
+                className="text-blue-500 cursor-pointer text-2xl md:text-3xl"
                 onClick={() => setSideBarOpen(!sideBarOpen)}
               />
             )}
 
-            <h1 className="text-xl md:text-4xl font-bold  text-black dark:text-blue-500">
+            <h1 className="text-2xl md:text-4xl font-bold  text-black dark:text-blue-500">
               kanban
             </h1>
           </div>
