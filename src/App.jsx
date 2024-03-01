@@ -44,7 +44,7 @@ const App = () => {
 
   // console.log(uuidv4());
   return (
-    <div className="grid grid-col-1 sm:grid-cols-[261px_1fr] grid-rows-[80px_1fr]">
+    <div className="h-screen grid grid-col-1 sm:grid-cols-[261px_1fr] grid-rows-[80px_1fr]">
       <Navbar
         selectedBoardName={selectedBoardName}
         selectedBoardId={selectedBoardId}

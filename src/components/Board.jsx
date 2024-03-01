@@ -68,9 +68,9 @@ const Board = ({ sideBarOpen }) => {
 
   return (
     <main
-      className={`h-screen flex px-8 py-4 gap-16 ${
+      className={`flex px-8 py-4 gap-16 ${
         sideBarOpen ? "col-start-2" : "col-start-1 col-span-2"
-      } bg-[#f4f7fd] dark:bg-[#20212c] overflow-auto`}
+      } bg-[#f4f7fd] dark:bg-[#20212c] overflow-scroll scrollbar`}
     >
       <DragDropContext onDragEnd={(result) => onDragEndHandler(result)}>
         {columns.map((column) => (
